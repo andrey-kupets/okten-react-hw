@@ -9,7 +9,7 @@ class UserComponent extends Component {
         return (
             <div>
                 {item.id}-{item.name}---Address: {JSON.stringify(item.address)};
-                {selectThisUser && <button onClick={() => selectThisUser(item.id)}>chose me</button>}
+                {selectThisUser && <button onClick={() => selectThisUser(item.id)}>Chose User</button>}
             </div>
         );
     }
