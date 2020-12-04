@@ -8,7 +8,7 @@ class PostComp extends Component {
         return (
             <div>
                 {item.id}-{item.title};
-                {selectThisPost && <button onClick={() => selectThisPost(item.id)}>Chose Post</button>}
+                {selectThisPost && <button onClick={() => selectThisPost(item.id)}>Choose Post</button>}
             </div>
         );
     }

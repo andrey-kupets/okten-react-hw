@@ -8,7 +8,7 @@ class CommentComponent extends Component {
         return (
             <div>
                 {item.id}-{item.email}-{item.body};
-                {selectThisComment && <button onClick={() => selectThisComment(item.id)}>Chose Comment</button>}
+                {selectThisComment && <button onClick={() => selectThisComment(item.id)}>Choose Comment</button>}
             </div>
         );
     }
