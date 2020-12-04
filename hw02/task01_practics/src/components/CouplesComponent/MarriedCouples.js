@@ -2,10 +2,6 @@ import React, {Component} from 'react';
 import {men, women} from "../../data";
 import MarriedCouple from "./MarriedCouple";
 
-
-let {id: women_id, name: women_name} = women;
-let couples = [...men, ...women];
-
 const joinArraysIn1 = (ARRAY_MEN, ARRAY_WOMEN) => {
     let MEN = JSON.parse(JSON.stringify(ARRAY_MEN));
     let WOMEN = JSON.parse(JSON.stringify(ARRAY_WOMEN));

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 
-
 class MarriedCouple extends Component {
     render() {
         let {item} = this.props;
