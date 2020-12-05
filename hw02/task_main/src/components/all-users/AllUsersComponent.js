@@ -4,24 +4,24 @@ import './AllUsers.css';
 
 class AllUsersComponent extends Component {
 
-    state = {users: [], classState: 'one', flag: false, chosenUser: null};
+    state = {users: []};
 
     componentDidMount() {
         fetch('https://jsonplaceholder.typicode.com/users')
             .then(value => value.json())
             .then(usersFromAPI => {
-                this.setState({users: usersFromAPI});
+                this.setState({users: usersFromAPI, flag: false, classState: 'one', chosenUser: null});
             });
-    }
+    };
 
     changeColor = () => {
         if (this.flag) {
             this.setState({classState: 'one'});
-        }else{
+        }else {
             this.setState({classState: 'two'});
         }
         this.flag = !this.flag;
-    };
+    }
 
     selectThisUser = (id) => {
         let chosenUser = this.state.users.find(value => value.id === id);

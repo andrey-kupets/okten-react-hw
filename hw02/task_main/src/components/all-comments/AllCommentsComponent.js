@@ -15,9 +15,9 @@ class AllCommentsComponent extends Component {
 
     changeColor = () => {
         if (this.flag) {
-            this.setState({classState: "one"});
+            this.setState({classState: 'one'});
         }else{
-            this.setState({classState: "two"});
+            this.setState({classState: 'two'});
         }
         this.flag = !this.flag;
     }
