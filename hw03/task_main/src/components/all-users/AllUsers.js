@@ -10,12 +10,16 @@ class AllUsers extends Component {
     state = {users: [], chosenOne: null};
 
     // userChoose = (id) => this.setState({chosenOne: this.state.users.find(value => value.id === id)}); // это укороченная
-    userChoose = (id) => {                     // это расписанная
-        this.setState({chosenOne: this.userService.findUserById(this.state.users, id)});   // стейт - объект -> ключ: значение -> {chosenOne: chosenOne} - тоже укорочено {chosenOne}
-    }
-    // userChoose = (id) => {
-    //     this.userService.getUserById(id).then(value => this.setState({chosenOne: value}));
+    // userChoose = (id) => {                     // это расписанная
+    //     let chosenOne = this.state.users.find(value => value.id === id);
+    //     this.setState({chosenOne});   // стейт - объект -> ключ: значение -> {chosenOne: chosenOne} - тоже укорочено {chosenOne}
     // }
+    // userChoose = (id) => {                   // укоротили с помощбю выноса в findUserById
+    //     this.setState({chosenOne: this.userService.findUserById(this.state.users, id)});   // стейт - объект -> ключ: значение -> {chosenOne: chosenOne} - тоже укорочено {chosenOne}
+    // }
+    userChoose = (id) => {
+        this.userService.getUserById(id).then(value => this.setState({chosenOne: value}));
+    };
 
     componentDidMount() {
         this.userService.getAllUsers().then(value => this.setState({users: value}));

@@ -5,11 +5,10 @@ class User extends Component {
         return (
             <div>
                 {item.id} - {item.name} {!isShowButton &&
-                <button onClick={() => {userChoose(item.id)}}>Choose User</button>
-                }
+                <button onClick={() => {userChoose(item.id)}}>Choose User</button>}
             </div>
-        );    }
-
+        );
+    }
 }
 
 export default User;
