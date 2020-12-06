@@ -7,10 +7,10 @@ export class UserService {
             .then(value => value);
     }
 
-    getUserById(id) {
-        return fetch(`${this.url}/${id}`).then(value => value.json()).then(value => value);
-    }
-    findUserById(users = [], id) {   // только для версии userChoose, где есть this.setState({chosenOne: this.userService.findUserById(this.state.users, id)})
+    // getUserById(id) {
+    //     return fetch(`${this.url}/${id}`).then(value => value.json()).then(value => value);
+    // }
+    findUserById(users = [], id) {   // только для версии userChoose, где есть this.userService.findUserById
         return users.find(value => value.id === id);
     }
 }

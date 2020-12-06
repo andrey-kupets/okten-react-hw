@@ -7,14 +7,22 @@ class AllPosts extends Component {
     postService = new PostService();
     state = {posts: [], chosenOne: null};
 
-    postChoose = (id) => {this.setState({chosenOne: this.state.posts.find(value => value.id === id)})}
+    // postChoose = (id) => {this.setState({chosenOne: this.state.posts.find(value => value.id === id)})}
+    // postChoose = (id) => {this.postService.getPostById(id).then(value => this.setState({chosenOne: value}))};
+    postChoose = (id) => {              //вынос в findPostById
+        this.setState({chosenOne: this.postService.findPostById(this.state.posts, id)});
+    }
 
-    componentDidMount() {
-        fetch('https://jsonplaceholder.typicode.com/posts')
-            .then(value => value.json())
-            .then(value => {
-                this.setState({posts: value});
-            });
+    // componentDidMount() {                       // straight
+    //     fetch('https://jsonplaceholder.typicode.com/posts')
+    //         .then(value => value.json())
+    //         .then(value => {
+    //             this.setState({posts: value})
+    //         });
+    // }
+
+    componentDidMount() {                         // from Service
+        this.postService.getAllPosts().then(value => this.setState({posts: value}));
     }
 
     render() {
