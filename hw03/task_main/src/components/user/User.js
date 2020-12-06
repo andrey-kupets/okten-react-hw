@@ -8,8 +8,8 @@ class User extends Component {
                 <button onClick={() => {userChoose(item.id)}}>Choose User</button>
                 }
             </div>
-        );
-    }
+        );    }
+
 }
 
 export default User;

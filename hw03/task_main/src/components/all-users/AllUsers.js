@@ -7,7 +7,7 @@ class AllUsers extends Component {
 
     userService = new UserService();
 
-    state = {users: [], };
+    state = {users: [], chosenOne: null};
 
     // userChoose = (id) => this.setState({chosenOne: this.state.users.find(value => value.id === id)}); // это укороченная
     userChoose = (id) => {                     // это расписанная
@@ -32,11 +32,11 @@ class AllUsers extends Component {
                         userChoose={this.userChoose}
                     />))
                 }
-                {/*{chosenOne && <h3 className={'chosenUser-line'}><User item={chosenOne} isShowButton={true}/></h3>}*/}
-                {chosenOne &&  // а можно и так напрямую но уже без всяких isShowButton - так больше кода, но всё проще и выводишь напрямую, всё, что хочешь
-                <h3 className={'chosenUser-line'}>
-                    {chosenOne.id} - {chosenOne.name} - {chosenOne.address.city}
-                </h3>}
+                {chosenOne && <h3 className={'chosenUser-line'}><User item={chosenOne} isShowButton={true}/></h3>}
+                {/*{chosenOne &&  // а можно и так напрямую но уже без всяких isShowButton - так больше кода, но всё проще и выводишь напрямую, всё, что хочешь*/}
+                {/*<h3 className={'chosenUser-line'}>*/}
+                {/*    {chosenOne.id} - {chosenOne.name} - {chosenOne.address.city}*/}
+                {/*</h3>}*/}
             </div>
         );
     }
