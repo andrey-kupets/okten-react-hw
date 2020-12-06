@@ -16,6 +16,12 @@ class AllUsers extends Component {
         let {users} = this.state;
         return (
             <div>
+                <form onSubmit={this.sbmt}>
+                    <input type='number'/>
+                    <input type='text'/>
+                    <button>Save</button>
+                </form>
+
                 <button onClick={this.show2Users}>show 2 users</button>
                 {
                     users.map(value => (<User item={value} key={value.id}/>))
@@ -23,6 +29,16 @@ class AllUsers extends Component {
             </div>
         );
     }
+
+    sbmt = (e) => {
+        e.preventDefault();
+        let id = e.target[0].value;
+        console.log(id);
+        let name = e.target[1].value;
+        console.log(name);
+        this.state.users.push({id, users});
+        this.setState({users: this.state.users});
+    };
 
     show2Users = async () => { // обязат. стрел. Ф. - или потеря контекста
         let {users, startId} = this.state;
