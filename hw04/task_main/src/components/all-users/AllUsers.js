@@ -3,12 +3,13 @@ import {UserService} from "../services/UserService";
 import User from "../user/User";
 import './AllUsers.css';
 import {
-    BrowserRouter as Router,
-    Switch,
+    BrowserRouter as Router,  // left as a template
+    Switch,            // left as a template
     Route,
-    Link,
+    Link,          // left as a template
     withRouter
 } from "react-router-dom";
+import FullUser from "../full_user/FullUser";
 
 class AllUsers extends Component {
     state = {users: []};
@@ -21,16 +22,18 @@ class AllUsers extends Component {
 
     render() {
         let {users} = this.state;
+        // let {match: {url}} = this.props; // for 1st case route
         return (
             <div>
                 {users.map(value => <User item={value} key={value.id}/>)}
                 <div className={'nest'}>
-                    <Switch>
+                    {/*<Switch>*/}
+                    {/*                {url + '/:id'}*/}
                         <Route path={'/users/:id'} render={(props) => {
-                            console.log(props);
-                            return 'USER INFO';
+                            let {match: {params: {id}}} = props;
+                            return <FullUser {...props} key={id}/>;
                         }}/>
-                    </Switch>
+                    {/*</Switch>*/}
                 </div>
             </div>
         );

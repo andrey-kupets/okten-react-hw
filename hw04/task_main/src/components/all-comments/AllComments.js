@@ -2,13 +2,8 @@ import React, {Component} from 'react';
 import {CommentService} from "../services/CommentService";
 import Comment from "../comment/Comment";
 import './AllComments.css';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    withRouter
-} from "react-router-dom";
+import {Route, withRouter} from "react-router-dom";
+import FullComment from "../full-component/FullComment";
 
 class AllComments extends Component {
     state = {comments: []};
@@ -25,12 +20,10 @@ class AllComments extends Component {
             <div>
                 {comments.map(value => <Comment item={value} key={value.id}/>)}
                 <div className={'nest'}>
-                    <Switch>
                         <Route path={'/comments/:id'} render={(props) => {
-                            console.log(props);
-                            return 'COMMENT INFO';
+                            let {match:{params:{id}}} = props;
+                            return <FullComment {...props} key={id}/>;
                         }}/>
-                    </Switch>
                 </div>
             </div>
         );

@@ -2,13 +2,8 @@ import React, {Component} from 'react';
 import {PostService} from "../services/PostService";
 import Post from "../post/Post";
 import './AllPosts.css';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    withRouter
-} from "react-router-dom";
+import {Route, withRouter} from "react-router-dom";
+import FullPost from "../full_post/FullPost";
 
 class AllPosts extends Component {
     state = {posts: []};
@@ -26,12 +21,10 @@ class AllPosts extends Component {
             <div>
                 {posts.map(value => <Post item={value} key={value.id}/>)}
                 <div className={'nest'}>
-                    <Switch>
                         <Route path={'/posts/:id'} render={(props) => {
-                            console.log(props);
-                            return 'POST INFO';
+                            let {match: {params: {id}}} = props;
+                            return <FullPost {...props} key={id}/>;
                         }}/>
-                    </Switch>
                 </div>
             </div>
         );
