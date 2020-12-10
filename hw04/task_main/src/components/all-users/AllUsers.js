@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {UserService} from "../services/UserService";
+import doFetch from "../services/doFetch";
 import User from "../user/User";
 import './AllUsers.css';
 import {
@@ -12,28 +12,27 @@ import {
 import FullUser from "../full_user/FullUser";
 
 class AllUsers extends Component {
-    state = {users: []};
-    userService = new UserService;
+    state = {users: false};
 
-    async componentDidMount() {
-        let users = await this.userService.getAllUsers();
-        this.setState({users});
+
+    componentDidMount() {
+        const {match:{url}} = this.props;
+        doFetch(url).then(users => this.setState({users}))
     }
 
     render() {
+
         let {users} = this.state;
+
         // let {match: {url}} = this.props; // for 1st case route
         return (
             <div>
-                {users.map(value => <User item={value} key={value.id}/>)}
+                {users && users.map(value => <User item={value} key={value.id}/>)}
                 <div className={'nest'}>
-                    {/*<Switch>*/}
-                    {/*                {url + '/:id'}*/}
                         <Route path={'/users/:id'} render={(props) => {
                             let {match: {params: {id}}} = props;
                             return <FullUser {...props} key={id}/>;
                         }}/>
-                    {/*</Switch>*/}
                 </div>
             </div>
         );

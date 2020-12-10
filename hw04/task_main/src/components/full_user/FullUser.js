@@ -8,6 +8,7 @@ class FullUser extends Component {
 
     async componentDidMount() {
         // let {id} = this.props; 1st case all users
+        console.log(this.props);
         let {match: {params:{id}}} = this.props;
         let user = await this.userService.getUser(id);
         this.setState({user});

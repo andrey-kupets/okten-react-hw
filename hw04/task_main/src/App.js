@@ -13,13 +13,14 @@ import {
 class App extends Component {
     render() {
         return (
-            <Router>
+            <div>
                 <div>
                     {/*<a href="/users">users</a> principle the same*/}
                     <Link to={'/users'}>users</Link><br/>
                     <Link to={'/posts'}>posts</Link><br/>
                     <Link to={'/comments'}>comments</Link>
                     <hr/>
+
                     <Switch>
                         {/*<Route path={'/users'} component={AllUsers}/>*/}
                         <Route path={'/users'} render={() => {
@@ -34,7 +35,7 @@ class App extends Component {
                     </Switch>
                     <hr/>
                 </div>
-            </Router>
+            </div>
         );
     }
 }
